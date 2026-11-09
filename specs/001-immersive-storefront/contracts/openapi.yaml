@@ -1,0 +1,226 @@
+openapi: 3.1.0
+info:
+  title: Carise Public API
+  version: 1.0.0
+  description: API REST pública de solo lectura para la landing inmersiva de Carise.
+servers:
+  - url: https://api.carise.example
+    description: Producción
+  - url: http://localhost:8000
+    description: Desarrollo local
+tags:
+  - name: Landing
+  - name: Productos
+paths:
+  /landing:
+    get:
+      tags: [Landing]
+      operationId: getLanding
+      summary: Datos de la landing y secuencia del video
+      description: Devuelve la configuración pública de la tienda y las escenas con sus prendas.
+      responses:
+        "200":
+          description: Landing disponible
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LandingResponse"
+        "503":
+          description: Landing sin configuración o sin escenas publicadas
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /productos/{id}:
+    get:
+      tags: [Productos]
+      operationId: getProducto
+      summary: Detalle completo de una prenda
+      description: Devuelve fotos, descripción, precio, tallas, colores y cuidado de la prenda.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identificador del producto
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        "200":
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductoDetalle"
+        "404":
+          description: Producto no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    LandingResponse:
+      type: object
+      required: [tienda, escenas]
+      properties:
+        tienda:
+          $ref: "#/components/schemas/ConfiguracionTienda"
+        escenas:
+          type: array
+          items:
+            $ref: "#/components/schemas/Escena"
+    ConfiguracionTienda:
+      type: object
+      required: [whatsapp, correo_contacto, direccion, video_landing_url]
+      properties:
+        whatsapp:
+          type: string
+          pattern: "^[0-9]{7,15}$"
+          example: "573001234567"
+        correo_contacto:
+          type: string
+          format: email
+          example: hola@carise.example
+        direccion:
+          type: string
+          example: "Calle 10 #20-30, Bogotá"
+        video_landing_url:
+          type: string
+          format: uri
+          example: https://cdn.carise.example/video/landing.mp4
+        video_landing_url_mobile:
+          type: [string, "null"]
+          format: uri
+          example: https://cdn.carise.example/video/landing-mobile.mp4
+        video_landing_poster_url:
+          type: [string, "null"]
+          format: uri
+          example: https://cdn.carise.example/video/landing-poster.jpg
+    Escena:
+      type: object
+      required: [id, orden, inicio_seg, fin_seg, producto]
+      properties:
+        id:
+          type: integer
+          format: int64
+        orden:
+          type: integer
+          minimum: 0
+        inicio_seg:
+          type: number
+          format: float
+          minimum: 0
+          example: 0
+        fin_seg:
+          type: number
+          format: float
+          exclusiveMinimum: 0
+          example: 4.5
+        producto:
+          $ref: "#/components/schemas/ProductoResumen"
+    ProductoResumen:
+      type: object
+      required: [id, nombre, slug, categoria, precio, moneda, agotado]
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+          example: "Vestido Lino"
+        slug:
+          type: string
+          example: "vestido-lino"
+        categoria:
+          $ref: "#/components/schemas/Categoria"
+        precio:
+          type: number
+          format: double
+          minimum: 0
+          example: 189900
+        moneda:
+          type: string
+          pattern: "^[A-Z]{3}$"
+          example: COP
+        agotado:
+          type: boolean
+          example: false
+        imagen_principal:
+          oneOf:
+            - $ref: "#/components/schemas/Multimedia"
+            - type: "null"
+    ProductoDetalle:
+      allOf:
+        - $ref: "#/components/schemas/ProductoResumen"
+        - type: object
+          required: [descripcion, cuidado, variantes, multimedia]
+          properties:
+            descripcion:
+              type: string
+            cuidado:
+              type: string
+            variantes:
+              type: array
+              items:
+                $ref: "#/components/schemas/Variante"
+            multimedia:
+              type: array
+              items:
+                $ref: "#/components/schemas/Multimedia"
+    Categoria:
+      type: object
+      required: [id, nombre, slug]
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+          example: Vestidos
+        slug:
+          type: string
+          example: vestidos
+    Variante:
+      type: object
+      required: [id, talla, color, disponible]
+      properties:
+        id:
+          type: integer
+          format: int64
+        talla:
+          type: string
+          example: M
+        color:
+          type: string
+          example: "Arena"
+        disponible:
+          type: boolean
+    Multimedia:
+      type: object
+      required: [id, tipo, url, orden]
+      properties:
+        id:
+          type: integer
+          format: int64
+        tipo:
+          type: string
+          enum: [imagen, video]
+        url:
+          type: string
+          format: uri
+          example: https://cdn.carise.example/productos/vestido-lino-1.jpg
+        alt_texto:
+          type: [string, "null"]
+          example: "Vestido de lino color arena"
+        orden:
+          type: integer
+          minimum: 0
+    Error:
+      type: object
+      required: [detail]
+      properties:
+        detail:
+          type: string
+          example: "Producto no encontrado"
