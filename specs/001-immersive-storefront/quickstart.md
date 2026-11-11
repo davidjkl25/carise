@@ -109,10 +109,11 @@ Resultado esperado: secciones presentes y enlaces funcionales.
 
 Resultado esperado: respuestas conformes a [contracts/openapi.yaml](./contracts/openapi.yaml).
 
-## Comandos de prueba sugeridos
+## Comandos de prueba
 
-- Frontend: `npm run test` (unidad), `npm run e2e` (Playwright).
-- Backend: `uv run pytest` (unitarias, integración y contrato).
+- Frontend (unitarias): `npm run test`.
+- Backend (unitarias): `uv run pytest`.
+- Integración, contrato y e2e (Playwright): pendientes de configurar.
 
 ## Referencias
 

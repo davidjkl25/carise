@@ -4,6 +4,8 @@ out/
 build/
 dist/
 coverage/
+next-env.d.ts
+tsconfig.tsbuildinfo
 package-lock.json
 pnpm-lock.yaml
 yarn.lock

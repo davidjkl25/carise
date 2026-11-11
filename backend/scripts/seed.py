@@ -30,15 +30,12 @@ async def seed() -> None:
                 correo_contacto="hola@carise.example",
                 direccion="Calle 10 #20-30, Bogotá",
                 video_landing_url=(
-                    "https://media.w3.org/2010/05/sintel/trailer.mp4"
+                    "/media/videos/movimiento.mp4"
                 ),
                 video_landing_url_mobile=(
-                    "https://interactive-examples.mdn.mozilla.net/"
-                    "media/cc0-videos/flower.mp4"
+                    "/media/videos/flor.mp4"
                 ),
-                video_landing_poster_url=(
-                    "https://picsum.photos/seed/carise-poster/1920/1080"
-                ),
+                video_landing_poster_url="/media/poster.jpg",
             )
         )
 
@@ -202,84 +199,84 @@ async def seed() -> None:
             MultimediaProductoModel(
                 producto_id=por_slug["vestido-lino"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-vestido-lino-1/900/1200",
+                url="/media/products/vestido-lino-1.jpg",
                 alt_texto="Vestido de lino color arena",
                 orden=1,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["vestido-lino"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-vestido-lino-2/900/1200",
+                url="/media/products/vestido-lino-2.jpg",
                 alt_texto="Detalle del lino del vestido arena",
                 orden=2,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["vestido-midi-seda"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-vestido-midi-seda-1/900/1200",
+                url="/media/products/vestido-midi-seda-1.jpg",
                 alt_texto="Vestido midi de seda terracota",
                 orden=1,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["vestido-midi-seda"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-vestido-midi-seda-2/900/1200",
+                url="/media/products/vestido-midi-seda-2.jpg",
                 alt_texto="Detalle de la seda del vestido terracota",
                 orden=2,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["blusa-gasa"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-blusa-gasa-1/900/1200",
+                url="/media/products/blusa-gasa-1.jpg",
                 alt_texto="Blusa de gasa blanca",
                 orden=1,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["blusa-gasa"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-blusa-gasa-2/900/1200",
+                url="/media/products/blusa-gasa-2.jpg",
                 alt_texto="Detalle de la gasa de la blusa blanca",
                 orden=2,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["blusa-oversize"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-blusa-oversize-1/900/1200",
+                url="/media/products/blusa-oversize-1.jpg",
                 alt_texto="Blusa oversize oliva",
                 orden=1,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["blusa-oversize"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-blusa-oversize-2/900/1200",
+                url="/media/products/blusa-oversize-2.jpg",
                 alt_texto="Detalle del algodón de la blusa oliva",
                 orden=2,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["cinturon-trenzado"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-cinturon-1/900/1200",
+                url="/media/products/cinturon-1.jpg",
                 alt_texto="Cinturón de cuero trenzado café",
                 orden=1,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["cinturon-trenzado"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-cinturon-2/900/1200",
+                url="/media/products/cinturon-2.jpg",
                 alt_texto="Detalle de la hebilla del cinturón",
                 orden=2,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["panuelo-seda"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-panuelo-1/900/1200",
+                url="/media/products/panuelo-1.jpg",
                 alt_texto="Pañuelo de seda estampado",
                 orden=1,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["panuelo-seda"].id,
                 tipo="imagen",
-                url="https://picsum.photos/seed/carise-panuelo-2/900/1200",
+                url="/media/products/panuelo-2.jpg",
                 alt_texto="Detalle del estampado del pañuelo",
                 orden=2,
             ),
@@ -287,8 +284,7 @@ async def seed() -> None:
                 producto_id=por_slug["vestido-lino"].id,
                 tipo="video",
                 url=(
-                    "https://interactive-examples.mdn.mozilla.net/"
-                    "media/cc0-videos/flower.mp4"
+                    "/media/videos/flor.mp4"
                 ),
                 alt_texto=None,
                 orden=10,
@@ -296,7 +292,7 @@ async def seed() -> None:
             MultimediaProductoModel(
                 producto_id=por_slug["vestido-midi-seda"].id,
                 tipo="video",
-                url="https://media.w3.org/2010/05/sintel/trailer.mp4",
+                url="/media/videos/movimiento.mp4",
                 alt_texto=None,
                 orden=10,
             ),
@@ -304,8 +300,7 @@ async def seed() -> None:
                 producto_id=por_slug["blusa-gasa"].id,
                 tipo="video",
                 url=(
-                    "https://filesamples.com/samples/video/mp4/"
-                    "sample_960x400_ocean_with_audio.mp4"
+                    "/media/videos/flor.mp4"
                 ),
                 alt_texto=None,
                 orden=10,
@@ -313,21 +308,21 @@ async def seed() -> None:
             MultimediaProductoModel(
                 producto_id=por_slug["blusa-oversize"].id,
                 tipo="video",
-                url="https://media.w3.org/2010/05/bunny/trailer.mp4",
+                url="/media/videos/movimiento.mp4",
                 alt_texto=None,
                 orden=10,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["cinturon-trenzado"].id,
                 tipo="video",
-                url="https://www.w3schools.com/html/mov_bbb.mp4",
+                url="/media/videos/movimiento.mp4",
                 alt_texto=None,
                 orden=10,
             ),
             MultimediaProductoModel(
                 producto_id=por_slug["panuelo-seda"].id,
                 tipo="video",
-                url="https://filesamples.com/samples/video/mp4/sample_640x360.mp4",
+                url="/media/videos/movimiento.mp4",
                 alt_texto=None,
                 orden=10,
             ),

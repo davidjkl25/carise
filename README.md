@@ -14,7 +14,7 @@ backend expone una API pública de solo lectura con la tienda, las escenas y el 
 ## Estructura
 
 ```text
-frontend/   Aplicación Next.js (landing, componentes y assets de marca)
+frontend/   Aplicación Next.js (landing, componentes, assets de marca y medios locales)
 backend/    API FastAPI, modelos, migraciones y seed
 docs/       Guías de operación (encoding de video, marca)
 specs/      Especificación, contrato OpenAPI y quickstart del proyecto
@@ -122,7 +122,15 @@ npm run start
 npx tsc --noEmit
 npm run lint
 npm run format:check
+npm run test
 ```
+
+### 5. Medios de ejemplo
+
+Los assets de demostración viven en `frontend/public/media/` (imágenes de producto, poster y dos
+clips de video) y se referencian con rutas relativas (`/media/...`), así que la landing funciona sin
+conexión a internet. Para producción, reemplaza esos archivos por el material real de la marca o
+apunta las URLs del seed a tu CDN: el backend solo almacena la URL.
 
 ## Marca
 
@@ -147,6 +155,9 @@ Ver [docs/brand.md](docs/brand.md).
 
 ## Estado de pruebas
 
-Las carpetas `backend/tests/` y `frontend/tests/` están preparadas para pruebas unitarias,
-integración y e2e, pero todavía no contienen suites automatizadas. La validación actual se realiza
-con los escenarios de `quickstart.md`.
+- **Backend:** pruebas unitarias de dominio y casos de uso en `backend/tests/unit/`
+  (`uv run pytest`).
+- **Frontend:** pruebas unitarias de utilidades en `frontend/tests/unit/` (`npm run test`).
+- **Integración y e2e:** pendientes; las carpetas `backend/tests/integration|contract` y
+  `frontend/tests/e2e` están preparadas. La validación manual sigue los escenarios de
+  `quickstart.md`.

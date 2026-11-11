@@ -64,7 +64,7 @@ export function AboutSection() {
         <div className="relative">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-brand bg-brand-sand">
             <Image
-              src="https://picsum.photos/seed/carise-about/900/1125"
+              src="/media/about.jpg"
               alt="Telas y prendas de la colección Carise"
               fill
               sizes="(max-width: 767px) 90vw, 42vw"
