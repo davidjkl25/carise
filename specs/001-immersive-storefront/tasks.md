@@ -30,15 +30,15 @@ description: "Task list for landing inmersiva de Carise"
 
 **Purpose**: Inicialización de los dos proyectos y estructura base.
 
-- [ ] T001 Crear la estructura de monorepo `backend/` y `frontend/` según `plan.md` (capas domain/application/infrastructure/presentation)
-- [ ] T002 Inicializar el backend en `backend/pyproject.toml` con FastAPI, Pydantic v2, SQLAlchemy 2 async, Alembic y `asyncpg`
-- [ ] T003 [P] Inicializar el frontend en `frontend/package.json` con Next.js App Router, TypeScript, Tailwind CSS y Framer Motion
-- [ ] T004 [P] Configurar lint y formato: `backend/ruff.toml` + `mypy.ini`, `frontend/.eslintrc.json` + `.prettierrc`
-- [ ] T005 [P] Crear `backend/.env.example` y `frontend/.env.example` con las variables del plan
-- [ ] T006 [P] Configurar tokens de marca en `frontend/tailwind.config.ts` (color, espaciado, radios) y variables CSS
-- [ ] T007 [P] Configurar `next/font/google` (Fraunces y Mea Culpa) como variables en `frontend/src/app/layout.tsx`
-- [ ] T008 [P] Configurar `frontend/next.config.ts` con `images.remotePatterns` para el CDN y los dominios de multimedia
-- [ ] T009 [P] Crear `frontend/public/brand/` con logo, favicon y placeholders de assets de marca
+- [X] T001 Crear la estructura de monorepo `backend/` y `frontend/` según `plan.md` (capas domain/application/infrastructure/presentation)
+- [X] T002 Inicializar el backend en `backend/pyproject.toml` con FastAPI, Pydantic v2, SQLAlchemy 2 async, Alembic y `asyncpg`
+- [X] T003 [P] Inicializar el frontend en `frontend/package.json` con Next.js App Router, TypeScript, Tailwind CSS y Framer Motion
+- [X] T004 [P] Configurar lint y formato: `backend/ruff.toml` + `mypy.ini`, `frontend/.eslintrc.json` + `.prettierrc`
+- [X] T005 [P] Crear `backend/.env.example` y `frontend/.env.example` con las variables del plan
+- [X] T006 [P] Configurar tokens de marca en `frontend/tailwind.config.ts` (color, espaciado, radios) y variables CSS
+- [X] T007 [P] Configurar `next/font/google` (Fraunces y Mea Culpa) como variables en `frontend/src/app/layout.tsx`
+- [X] T008 [P] Configurar `frontend/next.config.ts` con `images.remotePatterns` para el CDN y los dominios de multimedia
+- [X] T009 [P] Crear `frontend/public/brand/` con logo, favicon y placeholders de assets de marca
 
 **Checkpoint**: Ambos proyectos inicializados; sin lógica de negocio aún.
 
@@ -50,20 +50,20 @@ description: "Task list for landing inmersiva de Carise"
 
 **CRITICAL**: Ninguna historia puede empezar hasta completar esta fase.
 
-- [ ] T010 [P] Implementar settings por entorno en `backend/src/infrastructure/config/settings.py` con `pydantic-settings` (`DATABASE_URL`, `CORS_ORIGINS`, `WHATSAPP_DEFAULT`)
-- [ ] T011 [P] Configurar engine y sesión async en `backend/src/infrastructure/db/session.py` y `backend/src/infrastructure/db/base.py`
-- [ ] T012 [P] Inicializar Alembic en `backend/alembic/` con `env.py` apuntando a las settings y a los metadatos de SQLAlchemy 2
-- [ ] T013 [P] Definir entidades de dominio en `backend/src/domain/entities/`: `Categoria`, `Producto`, `Variante`, `MultimediaProducto`, `EscenaVideo`, `ConfiguracionTienda`
-- [ ] T014 [P] Definir puertos de repositorio en `backend/src/domain/repositories/`: `ProductoRepository` y `LandingRepository`
-- [ ] T015 Crear modelos SQLAlchemy 2 en `backend/src/infrastructure/models/` respetando el modelo de datos: `productos.precio` numeric(12,2) CHECK >= 0; `productos.moneda` char(3) DEFAULT 'COP'; `variantes` UNIQUE (`producto_id`, `talla`, `color`); `multimedia_producto.tipo` IN ('imagen','video'); `escenas_video.fin_seg` > `inicio_seg` e `inicio_seg` >= 0; `configuracion_tienda` singleton CHECK (`id` = 1)
-- [ ] T016 Crear la migración inicial en `backend/alembic/versions/` con tablas, FKs, checks, índices `(producto_id, disponible)`, `(producto_id, orden)` y `(orden)` en `escenas_video`
-- [ ] T017 [P] Crear la app FastAPI y CORS con lista blanca en `backend/src/main.py` (solo dominio del frontend y local en desarrollo)
-- [ ] T018 [P] Definir esquemas Pydantic v2 de respuesta en `backend/src/presentation/schemas/` según `contracts/openapi.yaml`
-- [ ] T019 [P] Crear el cliente HTTP y la configuración pública en `frontend/src/infrastructure/api/client.ts` y `frontend/src/infrastructure/config/env.ts`
-- [ ] T020 [P] Definir tipos de dominio del catálogo en `frontend/src/domain/` (`Producto`, `Variante`, `Escena`, `ConfiguracionTienda`)
-- [ ] T021 [P] Crear el layout raíz en `frontend/src/app/layout.tsx` con fuentes, metadata y estilos globales
-- [ ] T022 [P] Crear estilos base y tokens en `frontend/src/app/globals.css` y `frontend/src/styles/`
-- [ ] T023 Crear el script de seed en `backend/scripts/seed.py` con configuración de tienda, 2-3 categorías, 6-10 productos, variantes (incluida una prenda toda no disponible) e imágenes
+- [X] T010 [P] Implementar settings por entorno en `backend/src/infrastructure/config/settings.py` con `pydantic-settings` (`DATABASE_URL`, `CORS_ORIGINS`, `WHATSAPP_DEFAULT`)
+- [X] T011 [P] Configurar engine y sesión async en `backend/src/infrastructure/db/session.py` y `backend/src/infrastructure/db/base.py`
+- [X] T012 [P] Inicializar Alembic en `backend/alembic/` con `env.py` apuntando a las settings y a los metadatos de SQLAlchemy 2
+- [X] T013 [P] Definir entidades de dominio en `backend/src/domain/entities/`: `Categoria`, `Producto`, `Variante`, `MultimediaProducto`, `EscenaVideo`, `ConfiguracionTienda`
+- [X] T014 [P] Definir puertos de repositorio en `backend/src/domain/repositories/`: `ProductoRepository` y `LandingRepository`
+- [X] T015 Crear modelos SQLAlchemy 2 en `backend/src/infrastructure/models/` respetando el modelo de datos: `productos.precio` numeric(12,2) CHECK >= 0; `productos.moneda` char(3) DEFAULT 'COP'; `variantes` UNIQUE (`producto_id`, `talla`, `color`); `multimedia_producto.tipo` IN ('imagen','video'); `escenas_video.fin_seg` > `inicio_seg` e `inicio_seg` >= 0; `configuracion_tienda` singleton CHECK (`id` = 1)
+- [X] T016 Crear la migración inicial en `backend/alembic/versions/` con tablas, FKs, checks, índices `(producto_id, disponible)`, `(producto_id, orden)` y `(orden)` en `escenas_video`
+- [X] T017 [P] Crear la app FastAPI y CORS con lista blanca en `backend/src/main.py` (solo dominio del frontend y local en desarrollo)
+- [X] T018 [P] Definir esquemas Pydantic v2 de respuesta en `backend/src/presentation/schemas/` según `contracts/openapi.yaml`
+- [X] T019 [P] Crear el cliente HTTP y la configuración pública en `frontend/src/infrastructure/api/client.ts` y `frontend/src/infrastructure/config/env.ts`
+- [X] T020 [P] Definir tipos de dominio del catálogo en `frontend/src/domain/` (`Producto`, `Variante`, `Escena`, `ConfiguracionTienda`)
+- [X] T021 [P] Crear el layout raíz en `frontend/src/app/layout.tsx` con fuentes, metadata y estilos globales
+- [X] T022 [P] Crear estilos base y tokens en `frontend/src/app/globals.css` y `frontend/src/styles/`
+- [X] T023 Crear el script de seed en `backend/scripts/seed.py` con configuración de tienda, 2-3 categorías, 6-10 productos, variantes (incluida una prenda toda no disponible) e imágenes
 
 **Checkpoint**: Infraestructura lista; las historias pueden comenzar en paralelo.
 
@@ -77,18 +77,18 @@ description: "Task list for landing inmersiva de Carise"
 
 ### Implementation for User Story 1
 
-- [ ] T024 [P] [US1] Implementar el caso de uso `ObtenerLanding` y su DTO en `backend/src/application/use_cases/obtener_landing.py` (tienda + escenas ordenadas, `agotado` derivado de variantes disponibles, `imagen_principal` = primera imagen por `orden`)
-- [ ] T025 [P] [US1] Implementar `LandingRepository` en `backend/src/infrastructure/repositories/landing_repository.py` con query de configuración, escenas y productos
-- [ ] T026 [US1] Exponer `GET /landing` en `backend/src/presentation/api/landing.py` y montarlo en `backend/src/main.py`
-- [ ] T027 [US1] Obtener los datos de la landing en servidor en `frontend/src/app/page.tsx` (fetch a `NEXT_PUBLIC_API_URL`)
-- [ ] T028 [P] [US1] Crear `frontend/src/components/product-list/ProductList.tsx`: lista lateral en escritorio y tira inferior en celular
-- [ ] T029 [US1] Crear `frontend/src/components/video-scene/VideoScene.tsx` como componente cliente con sección `sticky` y contenedor de altura según la secuencia
-- [ ] T030 [US1] Implementar la sincronización scroll-video con Framer Motion `useScroll` + `requestAnimationFrame` en `frontend/src/application/hooks/useScrollVideo.ts`
-- [ ] T031 [US1] Sincronizar el tiempo del video con la prenda activa y el resaltado de la lista en `frontend/src/components/video-scene/VideoScene.tsx`
-- [ ] T032 [US1] Implementar el salto por clic desde la lista a la escena de la prenda en `frontend/src/components/product-list/ProductList.tsx`
-- [ ] T033 [US1] Configurar el elemento `<video>` con `muted`, `playsInline`, `poster`, `preload="metadata"` y fuente móvil liviana en `frontend/src/components/video-scene/VideoScene.tsx`
-- [ ] T034 [US1] Ajustar el comportamiento responsive (lista lateral vs tira inferior, sin scroll horizontal) en `frontend/src/components/`
-- [ ] T035 [US1] Manejar scroll rápido y saltos para que la prenda activa siempre corresponda a la escena visible en `frontend/src/application/hooks/useScrollVideo.ts`
+- [X] T024 [P] [US1] Implementar el caso de uso `ObtenerLanding` y su DTO en `backend/src/application/use_cases/obtener_landing.py` (tienda + escenas ordenadas, `agotado` derivado de variantes disponibles, `imagen_principal` = primera imagen por `orden`)
+- [X] T025 [P] [US1] Implementar `LandingRepository` en `backend/src/infrastructure/repositories/landing_repository.py` con query de configuración, escenas y productos
+- [X] T026 [US1] Exponer `GET /landing` en `backend/src/presentation/api/landing.py` y montarlo en `backend/src/main.py`
+- [X] T027 [US1] Obtener los datos de la landing en servidor en `frontend/src/app/page.tsx` (fetch a `NEXT_PUBLIC_API_URL`)
+- [X] T028 [P] [US1] Crear `frontend/src/components/product-list/ProductList.tsx`: lista lateral en escritorio y tira inferior en celular
+- [X] T029 [US1] Crear `frontend/src/components/video-scene/VideoScene.tsx` como componente cliente con sección `sticky` y contenedor de altura según la secuencia
+- [X] T030 [US1] Implementar la sincronización scroll-video con Framer Motion `useScroll` + `requestAnimationFrame` en `frontend/src/application/hooks/useScrollVideo.ts`
+- [X] T031 [US1] Sincronizar el tiempo del video con la prenda activa y el resaltado de la lista en `frontend/src/components/video-scene/VideoScene.tsx`
+- [X] T032 [US1] Implementar el salto por clic desde la lista a la escena de la prenda en `frontend/src/components/product-list/ProductList.tsx`
+- [X] T033 [US1] Configurar el elemento `<video>` con `muted`, `playsInline`, `poster`, `preload="metadata"` y fuente móvil liviana en `frontend/src/components/video-scene/VideoScene.tsx`
+- [X] T034 [US1] Ajustar el comportamiento responsive (lista lateral vs tira inferior, sin scroll horizontal) en `frontend/src/components/`
+- [X] T035 [US1] Manejar scroll rápido y saltos para que la prenda activa siempre corresponda a la escena visible en `frontend/src/application/hooks/useScrollVideo.ts`
 
 **Checkpoint**: US1 funcional y validable de forma independiente.
 
@@ -102,15 +102,15 @@ description: "Task list for landing inmersiva de Carise"
 
 ### Implementation for User Story 2
 
-- [ ] T036 [P] [US2] Implementar el caso de uso `ObtenerProducto` y su DTO en `backend/src/application/use_cases/obtener_producto.py` (detalle completo y `agotado` derivado)
-- [ ] T037 [P] [US2] Implementar `ProductoRepository` en `backend/src/infrastructure/repositories/producto_repository.py`
-- [ ] T038 [US2] Exponer `GET /productos/{id}` en `backend/src/presentation/api/productos.py` con `404` cuando no exista
-- [ ] T039 [P] [US2] Crear `frontend/src/components/product-detail/ProductDetail.tsx` con fotos, descripción, precio, tallas, colores y cuidado
-- [ ] T040 [P] [US2] Crear el selector de variantes en `frontend/src/components/product-detail/VariantSelector.tsx` (variantes no disponibles deshabilitadas)
-- [ ] T041 [P] [US2] Implementar el constructor de enlace `wa.me` con mensaje prellenado (prenda, talla, color, precio) en `frontend/src/application/whatsapp/buildWhatsAppUrl.ts`
-- [ ] T042 [US2] Crear `frontend/src/components/whatsapp-button/WhatsAppButton.tsx` que se habilita solo con talla y color elegidos
-- [ ] T043 [US2] Mostrar "Agotado" en lista y detalle y bloquear la compra en `frontend/src/components/product-list/ProductList.tsx` y `ProductDetail.tsx`
-- [ ] T044 [US2] Integrar el detalle como diálogo accesible disparado desde la lista y la escena en `frontend/src/components/product-detail/ProductDetailDialog.tsx`
+- [X] T036 [P] [US2] Implementar el caso de uso `ObtenerProducto` y su DTO en `backend/src/application/use_cases/obtener_producto.py` (detalle completo y `agotado` derivado)
+- [X] T037 [P] [US2] Implementar `ProductoRepository` en `backend/src/infrastructure/repositories/producto_repository.py`
+- [X] T038 [US2] Exponer `GET /productos/{id}` en `backend/src/presentation/api/productos.py` con `404` cuando no exista
+- [X] T039 [P] [US2] Crear `frontend/src/components/product-detail/ProductDetail.tsx` con fotos, descripción, precio, tallas, colores y cuidado
+- [X] T040 [P] [US2] Crear el selector de variantes en `frontend/src/components/product-detail/VariantSelector.tsx` (variantes no disponibles deshabilitadas)
+- [X] T041 [P] [US2] Implementar el constructor de enlace `wa.me` con mensaje prellenado (prenda, talla, color, precio) en `frontend/src/application/whatsapp/buildWhatsAppUrl.ts`
+- [X] T042 [US2] Crear `frontend/src/components/whatsapp-button/WhatsAppButton.tsx` que se habilita solo con talla y color elegidos
+- [X] T043 [US2] Mostrar "Agotado" en lista y detalle y bloquear la compra en `frontend/src/components/product-list/ProductList.tsx` y `ProductDetail.tsx`
+- [X] T044 [US2] Integrar el detalle como diálogo accesible disparado desde la lista y la escena en `frontend/src/components/product-detail/ProductDetailDialog.tsx`
 
 **Checkpoint**: US1 y US2 funcionan de forma independiente.
 
@@ -118,19 +118,19 @@ description: "Task list for landing inmersiva de Carise"
 
 ## Phase 5: User Story 3 - Ver la vitrina sin video o con menos movimiento (Priority: P2)
 
-**Goal**: Fallback estático con imágenes cuando el video falla o se prefiere menos movimiento.
+**Goal**: Fallback estático con imágenes cuando el video falla o la persona apaga el interruptor Movimiento.
 
-**Independent Test**: Bloquear el video o activar movimiento reducido y verificar la galería estática, la selección y el detalle.
+**Independent Test**: Bloquear el video o alternar el interruptor Movimiento y verificar la galería estática, la selección y el detalle.
 
 ### Implementation for User Story 3
 
-- [ ] T045 [P] [US3] Crear `frontend/src/application/hooks/useReducedMotion.ts` basado en `prefers-reduced-motion`
-- [ ] T046 [P] [US3] Detectar el error de carga del video (`onError`/`loadeddata`) y activar el modo estático en `frontend/src/components/video-scene/VideoScene.tsx`
-- [ ] T047 [US3] Crear `frontend/src/components/video-scene/StaticGallery.tsx` con `next/image` y las imágenes de las prendas
-- [ ] T048 [US3] Garantizar selección y apertura de detalle en modo estático en `frontend/src/components/product-list/ProductList.tsx` y `ProductDetailDialog.tsx`
-- [ ] T049 [US3] Desactivar la reproducción y saltar al modo estático cuando `prefers-reduced-motion` está activo en `frontend/src/components/video-scene/VideoScene.tsx`
+- [X] T045 [P] [US3] Crear `frontend/src/application/hooks/useReducedMotion.ts` basado en `prefers-reduced-motion`
+- [X] T046 [P] [US3] Detectar el error de carga de cada video (`onError`) y mostrar la imagen de esa escena sin cambiar el modo global en `frontend/src/components/video-scene/VideoScene.tsx`
+- [X] T047 [US3] Crear `frontend/src/components/video-scene/StaticGallery.tsx` con `next/image` y las imágenes de las prendas
+- [X] T048 [US3] Garantizar selección y apertura de detalle en modo estático en `frontend/src/components/product-list/ProductList.tsx` y `ProductDetailDialog.tsx`
+- [X] T049 [US3] Añadir un interruptor Movimiento visible que inicia en video y alterna la galería estática sin recargar, con scroll de página único, en `frontend/src/components/video-scene/VideoScene.tsx` y `StaticGallery.tsx`
 
-**Checkpoint**: La experiencia es completa sin video y con movimiento reducido.
+**Checkpoint**: La experiencia es completa sin video y se puede alternar el movimiento manualmente.
 
 ---
 
@@ -142,11 +142,11 @@ description: "Task list for landing inmersiva de Carise"
 
 ### Implementation for User Story 4
 
-- [ ] T050 [P] [US4] Crear la sección "Sobre nosotros" en `frontend/src/components/about/AboutSection.tsx`
-- [ ] T051 [P] [US4] Crear preguntas frecuentes en `frontend/src/components/faq/FaqSection.tsx` (acordeón accesible)
-- [ ] T052 [P] [US4] Crear contacto en `frontend/src/components/contact/ContactSection.tsx` usando WhatsApp, correo y dirección de la tienda
-- [ ] T053 [P] [US4] Crear el footer con redes sociales en `frontend/src/components/footer/Footer.tsx`
-- [ ] T054 [US4] Componer las secciones de cierre al final de la página en `frontend/src/app/page.tsx`
+- [X] T050 [P] [US4] Crear la sección "Sobre nosotros" en `frontend/src/components/about/AboutSection.tsx`
+- [X] T051 [P] [US4] Crear preguntas frecuentes en `frontend/src/components/faq/FaqSection.tsx` (acordeón accesible)
+- [X] T052 [P] [US4] Crear contacto en `frontend/src/components/contact/ContactSection.tsx` usando WhatsApp, correo y dirección de la tienda
+- [X] T053 [P] [US4] Crear el footer con redes sociales en `frontend/src/components/footer/Footer.tsx`
+- [X] T054 [US4] Componer las secciones de cierre al final de la página en `frontend/src/app/page.tsx`
 
 **Checkpoint**: Las cuatro historias están completas.
 
@@ -156,12 +156,12 @@ description: "Task list for landing inmersiva de Carise"
 
 **Purpose**: Mejoras transversales y validación final.
 
-- [ ] T055 [P] Optimizar rendimiento: `sizes` de `next/image`, precarga del video al entrar en viewport y documentar el encoding con keyframes frecuentes en `docs/video-encoding.md`
-- [ ] T056 [P] Accesibilidad: `alt` en imágenes, roles `aria` en lista/diálogo, foco visible y anuncio de "Agotado"
-- [ ] T057 [P] QA responsive: verificar sin scroll horizontal y con tira inferior usable en celular
-- [ ] T058 [P] SEO y metadata social (Open Graph) en `frontend/src/app/layout.tsx`
-- [ ] T059 [P] Documentar variables de entorno, migraciones y seed en `README.md` y `docs/`
-- [ ] T060 Ejecutar los 7 escenarios de `quickstart.md` y corregir desviaciones
+- [X] T055 [P] Optimizar rendimiento: `sizes` de `next/image`, precarga del video al entrar en viewport y documentar el encoding con keyframes frecuentes en `docs/video-encoding.md`
+- [X] T056 [P] Accesibilidad: `alt` en imágenes, roles `aria` en lista/diálogo, foco visible y anuncio de "Agotado"
+- [X] T057 [P] QA responsive: verificar sin scroll horizontal y con tira inferior usable en celular
+- [X] T058 [P] SEO y metadata social (Open Graph) en `frontend/src/app/layout.tsx`
+- [X] T059 [P] Documentar variables de entorno, migraciones y seed en `README.md` y `docs/`
+- [X] T060 Ejecutar los 7 escenarios de `quickstart.md` y corregir desviaciones
 
 ---
 

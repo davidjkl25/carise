@@ -151,6 +151,10 @@ components:
           oneOf:
             - $ref: "#/components/schemas/Multimedia"
             - type: "null"
+        video_principal:
+          oneOf:
+            - $ref: "#/components/schemas/Multimedia"
+            - type: "null"
     ProductoDetalle:
       allOf:
         - $ref: "#/components/schemas/ProductoResumen"

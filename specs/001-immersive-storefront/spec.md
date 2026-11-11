@@ -44,17 +44,18 @@ Desde la escena o la lista, la persona abre el detalle de una prenda y consulta 
 
 ### User Story 3 - Ver la vitrina sin video o con menos movimiento (Priority: P2)
 
-Si el video no carga o la persona prefiere menos movimiento, la landing muestra una versión estática con las imágenes de las prendas, manteniendo la posibilidad de seleccionar una prenda y ver su detalle.
+Si el video de una escena no carga, esa escena muestra la imagen de la prenda y la landing sigue en modo video. La persona también puede elegir ver toda la vitrina sin movimiento desde el interruptor del encabezado, que muestra una versión estática con las imágenes de las prendas, manteniendo la posibilidad de seleccionar una prenda y ver su detalle.
 
 **Why this priority**: Garantiza que la experiencia no se rompa por red, dispositivo o preferencia de accesibilidad.
 
-**Independent Test**: Bloquear el video o activar la preferencia de movimiento reducido y verificar que se muestran las imágenes y que se puede navegar y abrir el detalle.
+**Independent Test**: Bloquear el video de una escena y verificar que aparece su imagen sin cambiar de modo; alternar el interruptor Movimiento y verificar la galería estática y el detalle.
 
 **Acceptance Scenarios**:
 
-1. **Given** el video no carga, **When** la persona abre la landing, **Then** se muestra la versión estática con las imágenes de las prendas.
-2. **Given** la preferencia de movimiento reducido activa, **When** la persona abre la landing, **Then** no se reproduce el video y se usa la versión estática.
+1. **Given** el video de una escena no carga, **When** la persona llega a esa escena, **Then** se muestra la imagen de la prenda y se mantiene el modo video.
+2. **Given** la landing abierta en modo video, **When** la persona apaga el interruptor Movimiento, **Then** la página cambia a la versión estática sin recargar.
 3. **Given** la versión estática, **When** la persona selecciona una prenda, **Then** puede ver su detalle igual que en la versión con video.
+4. **Given** la versión estática, **When** la persona enciende el interruptor Movimiento, **Then** vuelve la vitrina en video.
 
 ---
 
@@ -73,8 +74,8 @@ Al final del scroll la persona encuentra la sección "Sobre nosotros", ayuda con
 
 ### Edge Cases
 
-- **Video no disponible o error de carga**: se muestra la versión estática sin bloquear la navegación.
-- **Preferencia de movimiento reducido**: no se reproduce el video y se usa la versión estática.
+- **Video no disponible o error de carga**: la escena afectada muestra su imagen principal; el modo video no cambia automáticamente y la navegación sigue funcionando.
+- **Modo sin movimiento**: la landing inicia en video; el interruptor del encabezado alterna a la galería estática sin recargar y mantiene un solo scroll de página.
 - **Prenda agotada**: se muestra como "Agotado" en la lista y en el detalle; no genera mensaje de compra.
 - **Prenda sin talla o color seleccionado**: "Comprar por WhatsApp" no se habilita hasta elegir una opción disponible.
 - **Variante no disponible**: la talla/color no seleccionable se muestra deshabilitada.
@@ -95,8 +96,8 @@ Al final del scroll la persona encuentra la sección "Sobre nosotros", ayuda con
 - **FR-007**: "Comprar por WhatsApp" MUST abrir WhatsApp con un mensaje prellenado que incluya prenda, talla, color y precio.
 - **FR-008**: La landing MUST NOT ofrecer pagos en línea ni carrito de compras.
 - **FR-009**: El pago y la entrega MUST acordarse por WhatsApp.
-- **FR-010**: Si el video no carga, el sistema MUST mostrar una versión estática con las imágenes de las prendas.
-- **FR-011**: Si la persona prefiere movimiento reducido, el sistema MUST mostrar la versión estática y no reproducir el video.
+- **FR-010**: Si el video de una escena no carga, el sistema MUST mostrar la imagen principal de esa prenda sin cambiar automáticamente el modo de la landing.
+- **FR-011**: La landing MUST iniciar en modo video y MUST permitir alternar a la versión estática mediante un interruptor visible en el encabezado, sin recargar la página.
 - **FR-012**: Las prendas agotadas MUST indicarse como "Agotado" en la lista y en el detalle.
 - **FR-013**: Una prenda agotada MUST NOT generar un mensaje de compra por WhatsApp.
 - **FR-014**: Al final del scroll MUST existir una sección "Sobre nosotros".

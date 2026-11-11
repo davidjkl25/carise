@@ -71,20 +71,26 @@ Resultado esperado: estado "Agotado" explícito y compra bloqueada (SC-004).
 
 ### 4. Fallback sin video (US3)
 
-1. Bloquear la URL del video desde las herramientas de red o usar un `src` inválido.
-2. Recargar la landing.
-3. Verificar que se muestra la versión estática con imágenes.
-4. Seleccionar una prenda y abrir su detalle.
+1. Bloquear la URL del video de una escena desde las herramientas de red o usar un `src` inválido.
+2. Recargar la landing y llegar a esa escena.
+3. Verificar que se muestra la imagen principal de la prenda, que el modo sigue siendo video y que
+   no hay saltos de scroll.
+4. Seleccionar la prenda y abrir su detalle.
+5. Apagar el interruptor **Movimiento** y verificar la galería estática.
 
-Resultado esperado: experiencia navegable sin video (SC-006).
+Resultado esperado: experiencia navegable con fallback por escena y sin cambios automáticos de modo
+(SC-006).
 
-### 5. Movimiento reducido (US3)
+### 5. Modo sin movimiento (US3)
 
-1. Activar `prefers-reduced-motion: reduce` en el navegador o sistema.
-2. Recargar la landing.
-3. Verificar que el video no se reproduce y se usa la versión estática.
+1. Abrir la landing: inicia en modo video.
+2. Pulsar el interruptor **Movimiento** del encabezado.
+3. Verificar que aparece la galería estática, que hay un solo scroll de página y que el interruptor
+   queda apagado.
+4. Pulsar de nuevo el interruptor y verificar que vuelve el video.
 
-Resultado esperado: se respeta la preferencia sin perder funcionalidad (SC-006).
+Resultado esperado: se alterna el modo sin recargar y la galería mantiene toda la funcionalidad
+(SC-006).
 
 ### 6. Cierre de página (US4)
 

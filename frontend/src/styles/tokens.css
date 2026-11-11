@@ -1,0 +1,22 @@
+:root {
+  --color-brand-brown: #442f2a;
+  --color-brand-blush: #f5cbd7;
+  --color-brand-cream: #fff7ec;
+  --color-brand-bubble: #f1d2df;
+  --color-brand-sky: #8f939a;
+  --color-brand-rose: #9c5b67;
+
+  --color-brand-brown-rgb: 68 47 42;
+  --color-brand-blush-rgb: 245 203 215;
+  --color-brand-cream-rgb: 255 247 236;
+  --color-brand-bubble-rgb: 241 210 223;
+  --color-brand-sky-rgb: 143 147 154;
+  --color-brand-rose-rgb: 156 91 103;
+
+  --color-brand-ink: var(--color-brand-brown);
+  --color-brand-sand: var(--color-brand-bubble);
+  --color-brand-clay: var(--color-brand-rose);
+  --color-brand-olive: var(--color-brand-sky);
+  --radius-brand: 0.75rem;
+  --space-brand: 1.5rem;
+}

@@ -31,11 +31,12 @@ prellenado con prenda, talla, color y precio. No hay pagos en línea ni carrito.
 entrega se acuerdan por WhatsApp. Ninguna funcionalidad debe introducir un flujo de pago o un
 carrito.
 
-### V. Degradación elegante y respeto al movimiento
+### V. Degradación elegante y movimiento controlable
 
-Si el video no carga, o si la persona prefiere menos movimiento, se muestra una versión estática
-con las imágenes de las prendas. Esta versión debe ofrecer la misma capacidad de selección y de
-acceso al detalle que la versión con video. Se respeta `prefers-reduced-motion`.
+Si el video de una escena no carga, se muestra la imagen principal de esa prenda sin cambiar
+automáticamente el modo ni saltar de posición. La landing inicia en video y ofrece un interruptor
+visible para pasar a la galería estática y volver, con la misma capacidad de selección y de acceso
+al detalle. La preferencia `prefers-reduced-motion` desactiva los desplazamientos animados.
 
 ### VI. Estado de agotado explícito
 
@@ -81,7 +82,7 @@ catálogo. La persona navega y compra sin crear cuenta.
 - Cualquier prenda es alcanzable en cualquier momento desde la lista.
 - El detalle muestra todos los campos obligatorios y refleja el estado de agotado.
 - El mensaje de WhatsApp incluye prenda, talla, color y precio correctos.
-- La versión estática funciona sin video y con movimiento reducido.
+- La versión estática funciona sin video, se alterna manualmente y no hay cambios automáticos de modo por fallos de video.
 - La experiencia es usable y legible en celular y en escritorio.
 
 ## Gobernanza

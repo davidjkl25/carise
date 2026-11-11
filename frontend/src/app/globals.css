@@ -1,0 +1,33 @@
+@import "../styles/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-brand-cream);
+    color: var(--color-brand-ink);
+    font-family: "Myriad Pro", system-ui, "Segoe UI", sans-serif;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-clay);
+    color: var(--color-brand-cream);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+dialog::backdrop {
+  background-color: rgb(68 47 42 / 0.72);
+  backdrop-filter: blur(4px);
+}
