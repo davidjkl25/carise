@@ -53,17 +53,27 @@ Tipografía, color, tono y fotografía deben ser coherentes en todos los estados
 La experiencia se diseña y valida primero en celular (incluida la tira inferior de prendas).
 El video y las imágenes deben cargar de forma progresiva y no bloquear la interacción.
 
-### IX. Experiencia sin cuentas
+### IX. Experiencia de cliente sin cuentas
 
-No hay registro, inicio de sesión, favoritos, panel de administración, búsqueda ni filtros de
-catálogo. La persona navega y compra sin crear cuenta.
+La persona que visita la tienda navega y compra sin registro, inicio de sesión, favoritos ni
+cuenta. Se permite un panel de administración interno, autenticado y auditado para el personal
+autorizado; el panel no forma parte de la experiencia pública.
+
+### X. Administración segura y auditable
+
+Toda gestión interna del negocio ocurre en un panel separado de la landing, protegido por
+autenticación y autorización. La API pública permanece de solo lectura, ninguna escritura queda
+expuesta sin autenticación y cada cambio registra actor, fecha y valores antes/después.
 
 ## Restricciones del proyecto
 
-- **Fuera de alcance:** registro, inicio de sesión, favoritos, panel de administración, búsqueda
-  y filtros de catálogo.
+- **Fuera de alcance:** cuentas de cliente, registro público, favoritos persistentes, búsqueda y
+  filtros de catálogo, y comercio electrónico con pago en línea.
+- **Panel interno:** el panel de administración es para personal autorizado; no se expone como
+  experiencia pública ni reemplaza el flujo de compra por WhatsApp.
 - **Un solo canal de conversión:** WhatsApp. Sin pasarela de pago, sin carrito, sin checkout.
-- **Sin datos personales en la aplicación:** la identidad y la conversación viven en WhatsApp.
+- **Sin datos personales de clientes:** la identidad y la conversación viven en WhatsApp. El
+  panel solo almacena credenciales del personal autorizado.
 - **Contenido de prendas:** cada prenda requiere fotos, descripción, precio, tallas, colores y
   cuidado antes de publicarse.
 
@@ -76,6 +86,13 @@ catálogo. La persona navega y compra sin crear cuenta.
 5. Al final del scroll: sección "Sobre nosotros", ayuda (preguntas frecuentes y contacto) y footer
    con redes sociales.
 
+## Flujo de administración
+
+1. La persona autorizada inicia sesión en `/admin` con sus credenciales.
+2. Gestiona catálogo, precios, variantes, multimedia, escenas y datos de la tienda.
+3. Cada cambio queda auditado y se refleja en la landing sin recompilar.
+4. Las cuentas de cliente, los favoritos persistentes y el pago en línea siguen fuera de alcance.
+
 ## Criterios de calidad (puertas de aceptación)
 
 - La prenda resaltada en la lista coincide siempre con la prenda mostrada en el video.
@@ -84,6 +101,17 @@ catálogo. La persona navega y compra sin crear cuenta.
 - El mensaje de WhatsApp incluye prenda, talla, color y precio correctos.
 - La versión estática funciona sin video, se alterna manualmente y no hay cambios automáticos de modo por fallos de video.
 - La experiencia es usable y legible en celular y en escritorio.
+- Ninguna escritura del panel queda accesible sin autenticación y toda escritura queda auditada.
+- La landing pública sigue siendo de solo lectura y no requiere cuenta.
+
+## Enmiendas
+
+### v1.1.0 — 2026-11-11
+
+- Se permite un panel de administración interno, autenticado y auditado (feature
+  `002-admin-panel`), manteniendo a las clientas sin cuentas.
+- Se retira "panel de administración" de las restricciones de fuera de alcance.
+- Se agrega el Principio X de administración segura y auditable.
 
 ## Gobernanza
 
@@ -93,6 +121,6 @@ justificarse explícitamente y registrarse antes de implementarse. Las enmiendas
 actualizar este documento y revisar su impacto en el flujo, el alcance y los criterios de
 aceptación.
 
-**Versión:** 1.0.0
+**Versión:** 1.1.0
 **Ratificada:** 2026-11-08
-**Última enmienda:** 2026-11-08
+**Última enmienda:** 2026-11-11
